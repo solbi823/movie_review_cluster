@@ -54,27 +54,16 @@ def calculate_mean_similarity(model, nouns, words):
 
 def calculate_mean_similarity2(model, nouns, words):
 
-	dim = model["영화"].size
-
-	vec_sum = np.zeros(dim)
-	num =0
+	largest = 0
 	for n in nouns:
-		if n in model.wv.vocab:
-			vec_sum+= model[n]
-			num +=1
+		if n in model.wv.vocab and n != "영화":
 
-	sectence_vec = vec_sum / num
+			for w in words:
+				tmp =  model.similarity(n, w)
+				if largest < tmp:
+					largest = tmp
 
-	vec_sum = np.zeros(dim)
-	num =0
-	for w in words:
-		if w in model.wv.vocab:
-			vec_sum+= model[w]
-			num +=1 
-
-	category_vec = vec_sum / num
-
-	return model.similarity(sectence_vec, category_vec)
+	return largest
 
 
 
@@ -153,14 +142,20 @@ def main():
 
 		value_list = []
 
-		value_list.append( calculate_mean_similarity(model, nouns, ["감독","연출"]))
-		value_list.append( calculate_mean_similarity(model, nouns, ["내용", "줄거리"]))
-		value_list.append( calculate_mean_similarity(model, nouns, ["음악", "노래"]))
-		value_list.append( calculate_mean_similarity(model, nouns, ["색감", "영상"]))
-		value_list.append( calculate_mean_similarity(model, nouns, ["연기", "배우"]))
+		# value_list.append( calculate_mean_similarity(model, nouns, ["감독","연출"]))
+		# value_list.append( calculate_mean_similarity(model, nouns, ["내용", "줄거리"]))
+		# value_list.append( calculate_mean_similarity(model, nouns, ["음악", "노래"]))
+		# value_list.append( calculate_mean_similarity(model, nouns, ["색감", "영상"]))
+		# value_list.append( calculate_mean_similarity(model, nouns, ["연기", "배우"]))
+
+		value_list.append( calculate_mean_similarity2(model, nouns, ["감독","연출"]))
+		value_list.append( calculate_mean_similarity2(model, nouns, ["내용", "줄거리"]))
+		value_list.append( calculate_mean_similarity2(model, nouns, ["음악", "노래"]))
+		value_list.append( calculate_mean_similarity2(model, nouns, ["색감", "영상"]))
+		value_list.append( calculate_mean_similarity2(model, nouns, ["연기", "배우"]))
 
 		for i in range(0, 5):
-			if value_list[i] > 0.3:
+			if value_list[i] > 0.6:
 				classified_review[i].append(splited_line[1])
 
 	f.close()
