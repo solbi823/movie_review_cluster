@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>네이버 영화</title>
+<link href="https://ssl.pstatic.net/static/m/movie/icons/naver_movie_favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/css/common.css?20181107154553" rel="stylesheet" type="text/css">
+<link href="/css/movie_tablet.css?20181107154553" rel="stylesheet" type="text/css"/>
+<link href="/css/movie_end.css?20181107154553" rel="stylesheet" type="text/css"/>
+<script src="/js/deploy/movie.all.js?20181107154553" type="text/javascript"></script>
+</link></head>
+<body>
+<!-- content -->
+<input id="movieCode" name="movieCode" type="hidden" value="154255"/>
+<input id="onlyActualPointYn" name="onlyActualPointYn" type="hidden" value="N"/>
+<input id="order" name="order" type="hidden" value="sympathyScore"/>
+<input id="page" name="page" type="hidden" value="1"/>
+<input id="point" name="point" type="hidden" value="0"/>
+<div class="ifr_area basic_ifr">
+<div class="input_netizen ">
+<form id="pointWriteArea">
+<fieldset>
+<legend><span class="blind">네티즌 평점 입력란</span></legend>
+<!-- 모바일 기기로 접근 시 : 클래스 t_layer_view 추가 -->
+<ul class="t_layer_view">
+<li class="drag_star">
+<div class="lft">
+<div class="star_score">
+<strong class="blind">평점선택</strong>
+<!-- [D] st_off 영역에 마우스 오버시 : 클래스 st_over 추가
+												 [D] 버튼 선택시 : 선택된 버튼 클래스 'on' 추가, 대체텍스트 '선택됨' 추가, 짝수 점수 버튼에 클래스 st_r 추가, 디폴트는 화면에 보이지 않는 0점 버튼 -->
+<div class="st_off" id="pointStarRating">
+<button class="_pointStarRatingList btn_star on" title="0" type="button">0점 선택됨</button>
+<button class="_pointStarRatingList btn_star" title="1" type="button">1점</button>
+<button class="_pointStarRatingList btn_star st_r" title="2" type="button">2점</button>
+<button class="_pointStarRatingList btn_star" title="3" type="button">3점</button>
+<button class="_pointStarRatingList btn_star st_r" title="4" type="button">4점</button>
+<button class="_pointStarRatingList btn_star" title="5" type="button">5점</button>
+<button class="_pointStarRatingList btn_star st_r" title="6" type="button">6점</button>
+<button class="_pointStarRatingList btn_star" title="7" type="button">7점</button>
+<button class="_pointStarRatingList btn_star st_r" title="8" type="button">8점</button>
+<button class="_pointStarRatingList btn_star" title="9" type="button">9점</button>
+<button class="_pointStarRatingList btn_star st_r" title="10" type="button">10점</button>
+</div>
+<span class="blind">평점</span><span class="star_count"><em id="pointStarRatingValue">0<span class="blind">점 </span></em><em>/<span class="blind"> 총 </span>10<span class="blind">점</span></em></span>
+<!-- [D] 레이어 펼침시 : 클래스 on 추가, 타이틀, 대체 텍스트 변경 : 별점 선택 레이어 닫기 -->
+<button class="btn_ly_open _pointStarRatingLayer" id="pointStarRatingLayerOpenButton" title="별점 선택 레이어 펼침" type="button">별점 선택 레이어 펼침</button>
+</div>
+</div>
+</li>
+<li class="input_textarea">
+<!-- [D] 인풋박스 포커스시, 입력내용이 바뀌었을 때 : 클래스 active 추가 -->
+<textarea class="input_tx" cols="1" id="ment" maxlength="140" name="ment" row="1" rows="1"></textarea>
+<p class="tx_length"><em id="ment_cnt">0</em>/140</p>
+</li>
+<li>
+<input alt="등록" id="pointAddButton" onclick="parent.clickcr(this,'ara.register','','',event); return false;" src="https://ssl.pstatic.net/static/movie/2012/06/score_btn_submit.png" style="display:block;" type="image"/>
+</li>
+</ul>
+<div class="t_layer_score" id="pointStarRatingLayer" style="display:none">
+<strong class="blind">별점을 선택하세요</strong>
+<ul class="t_list_score">
+<li><a class="_pointStarRatingLayer _pointStarRatingLayerList 10" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>10</em></a></li>
+<li><a class="_pointStarRatingLayer _pointStarRatingLayerList 9" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>9</em></a></li>
+<li><a class="_pointStarRatingLayer _pointStarRatingLayerList 8" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>8</em></a></li>
+<li><a class="_pointStarRatingLayer _pointStarRatingLayerList 7" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>7</em></a></li>
+<li class="b_none"><a class="_pointStarRatingLayer _pointStarRatingLayerList 6" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>6</em></a></li>
+<li class="col_right"><a class="_pointStarRatingLayer _pointStarRatingLayerList 5" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>5</em></a></li>
+<li class="col_right"><a class="_pointStarRatingLayer _pointStarRatingLayerList 4" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>4</em></a></li>
+<li class="col_right"><a class="_pointStarRatingLayer _pointStarRatingLayerList 3" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>3</em></a></li>
+<li class="col_right"><a class="_pointStarRatingLayer _pointStarRatingLayerList 2" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>2</em></a></li>
+<li class="b_none col_right"><a class="_pointStarRatingLayer _pointStarRatingLayerList 1" href="#" onclick="return false;"><span class="star"><span class="on"></span></span> <em>1</em></a></li>
+</ul>
+</div>
+</fieldset>
+</form>
+<!-- [D] 관람객 평점 작성 완료 -->
+<div class="ly_viewer" id="actualPointWriteExecuteLayer" style="display:none">
+<h4>관람객 평점 작성 완료 안내</h4>
+<p>관람객 평점이 등록되었습니다.<br/><em>네이버페이 포인트 500원</em>이 적립되었습니다.<br/><em>7일 이후</em> 확인 가능합니다.</p>
+<p>(평점 삭제시, 적립된 포인트는 회수됩니다.)</p>
+<div class="btn">
+<a class="ok" href="#" id="actualPointWriteExecuteLayerOkButton">확인</a>
+<a class="close" href="#" id="actualPointWriteExecuteLayerCloseButton" title="닫기">관람객 평점 작성 완료 안내 레이어 닫기</a>
+</div>
+</div>
+<!-- //관람객 평점 작성 완료 -->
+<!-- [D] 관람객 평점 작성 완료2 -->
+<div class="ly_viewer" id="pointWriteExecuteLayer" style="display:none">
+<h4>관람객 평점 작성 완료 안내</h4>
+<p class="msg1">관람객 평점이 등록되었습니다.</p>
+<div class="btn">
+<a class="ok" href="#" id="pointWriteExecuteLayerOkButton">확인</a>
+<a class="close" href="#" id="pointWriteExecuteLayerCloseButton" title="닫기">관람객 평점 작성 완료 안내 레이어 닫기</a>
+</div>
+</div>
+<!-- //관람객 평점 작성 완료2 -->
+<!-- [D] 네이버페이 가입 안내 레이어 -->
+<div class="ly_viewer" id="naverMileageSubscriptionLayer" style="display:none">
+<h4>네이버페이 가입 안내 레이어</h4>
+<p class="msg2"><em>네이버페이</em> 이용약관에 동의해주시면 포인트 500원<br/>이 적립됩니다.</p>
+<p><a class="link_mileage" href="http://pay.naver.com/about" target="_blank">네이버페이 소개</a></p>
+<div class="btn">
+<a class="join" href="#" id="naverMileageSubscriptionButton">약관동의</a>
+<a class="close" href="#" id="naverMileageSubscriptionLayerCloseButton" title="닫기">네이버페이 가입 안내 레이어 닫기</a>
+</div>
+</div>
+<!-- //네이버페이 가입 안내 레이어 -->
+<div class="score_total">
+<strong class="total"><span class="tit"><em class="blind">140자 평</em></span><span class="sp">|</span>총<em>5,525</em>건</strong>
+</div>
+<div class="top_behavior" id="orderCheckbox">
+<ul class="sorting_list">
+<li class="on"><a href="#" onclick="parent.clickcr(this, 'ara.bysym', '', '', event); dislplayOrder('sympathyScore');">호감순</a></li>
+<li><a href="#" onclick="parent.clickcr(this, 'ara.byrct', '', '', event); dislplayOrder('newest');">최신순</a></li>
+<li><a href="#" onclick="parent.clickcr(this, 'ara.high', '', '', event); dislplayOrder('highest');">평점 높은 순</a></li>
+<li><a href="#" onclick="parent.clickcr(this, 'ara.low', '', '', event); dislplayOrder('lowest');">평점 낮은 순</a></li>
+</ul>
+<ul class="quarter_mode">
+<li>
+<input id="actualYnCheckBox" name="viewer" onclick="parent.clickcr(this,'ura.mgs','','',event); return false;" type="checkbox"/>
+<label class="label_viewer" for="viewerCheckBox" id="actualYnLable">관람객 평점만 보기</label>
+<a class="help _actualPointHelp" href="#" id="actualPointHelpButton" title="도움말">관람객 평점만 보기 도움말</a>
+<div class="ly_help _actualPointHelp" id="actualPointHelp" style="display:none">
+<h5>관람객평점만 보기 안내 레이어</h5>
+<div class="ly_cont _actualPointHelp">
+<p>네이버 영화에서 예매하신 고객님들이<br/> 영화 관람 후 등록해주신 평점입니다.</p>
+</div>
+<button class="btn_close _actualPointHelp" id="actualPointHelpCloseButton" title="닫기" type="button"><span class="blind">관람객 평점만 보기 안내 레이어 닫기</span></button>
+<span class="arr _actualPointHelp"></span>
+</div>
+</li>
+</ul>
+</div>
+<div class="score_result">
+<ul>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:80.0%"></span></span><em>8</em>
+</div>
+<div class="score_reple">
+<p>해리포터노래 나올때 소름..  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14853707, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>jjh4****</span>
+</a>
+</em>
+<em>2018.11.14 09:03</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','jjh4****', '0fOS1jyJyx9617RfG+nEFktF2dOstmAp2Jzr8J3nUHo=', '해리포터노래 나올때 소름.. ', '14853707', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14853707 count">1339</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14853707 count v2">223</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:80.0%"></span></span><em>8</em>
+</div>
+<div class="score_reple">
+<p>다음편을 위한 전초전 같은영화. 솔직히 1시간 지난뒤부터는 좀 지루하더라 ㅠ해리포터와 동물사전 1편을 안봤다면 더 재미 없을듯.  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14853971, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>char****</span>
+</a>
+</em>
+<em>2018.11.14 10:54</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','char****', '7ydPOY71hw47J3u4Rr4Tq7NDtIpmA/FNYq5hTflXvpw=', '다음편을 위한 전초전 같은영화. 솔직히 1시간 지난뒤부터는 좀 지루하더라 ㅠ해리포터와 동물사전 1편을 안봤다면 더 재미 없을듯. ', '14853971', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14853971 count">1122</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14853971 count v2">142</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:50.0%"></span></span><em>5</em>
+</div>
+<div class="score_reple">
+<p>시간가는줄 알고 봤습니다  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14854396, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>눈의 꽃(kkk8****)</span>
+</a>
+</em>
+<em>2018.11.14 12:49</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','kkk8****', 'XzxiLGf9OSJoiJdKiUBCTW2hyurcKE7OJs1U974Kaaw=', '시간가는줄 알고 봤습니다 ', '14854396', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14854396 count">1158</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14854396 count v2">425</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:80.0%"></span></span><em>8</em>
+</div>
+<div class="score_reple">
+<p>범죄는많은데.. 동물은 왤케적냐  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14853705, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>배수연(bas2****)</span>
+</a>
+</em>
+<em>2018.11.14 09:02</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','bas2****', 'Lmi1o6qM0eFUrKBRyxdNpnossh6ZOg91Ye6y6ksMZU0=', '범죄는많은데.. 동물은 왤케적냐 ', '14853705', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14853705 count">820</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14853705 count v2">94</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:20.0%"></span></span><em>2</em>
+</div>
+<div class="score_reple">
+<p>평점이 너무 높네요 영화제목을 바꿔야해요 그린덴왈드가 범죄를 저지르기도 전에 끝나거든요 .. 예를들면 크레덴스는 누구게? 이런걸로 바꿔야함.. 하여튼 핵별로  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14857711, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>하지현(haji****)</span>
+</a>
+</em>
+<em>2018.11.15 02:04</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','haji****', 'PhG6/R3Dsh4X61rEp0vEw1u8D3tchmAU2KfW7qquauU=', '평점이 너무 높네요 영화제목을 바꿔야해요 그린덴왈드가 범죄를 저지르기도 전에 끝나거든요 .. 예를들면 크레덴스는 누구게? 이런걸로 바꿔야함.. 하여튼 핵별로 ', '14857711', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14857711 count">865</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14857711 count v2">180</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:80.0%"></span></span><em>8</em>
+</div>
+<div class="score_reple">
+<p><span class="ico_viewer">관람객</span>재밌었지만 롤링의 다른 작품들보다는 전개나 스토리가 약간 지루하고 아쉬움이 남았습니다. 눈은 너무너무 즐거웠어요. 시각 효과는 두시간 내내 행복하게 해줬습니다! 다음편 더 기대할게요!  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14854329, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>d41801(dldu****)</span>
+</a>
+</em>
+<em>2018.11.14 12:28</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','dldu****', 'rudBzkERjWeSrjl1EWvA6znRz//E4HRxrqNE8tVi3w0=', '재밌었지만 롤링의 다른 작품들보다는 전개나 스토리가 약간 지루하고 아쉬움이 남았습니다. 눈은 너무너무 즐거웠어요. 시각 효과는 두시간 내내 행복하게 해줬습니다! 다음편 더 기대할게요! ', '14854329', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14854329 count">722</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14854329 count v2">110</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:60.0%"></span></span><em>6</em>
+</div>
+<div class="score_reple">
+<p>조조 쳐 보고 다는 평점입니다. 롤링이 스토리를 썼다고는 믿기지 않은 헐렁한 전개와 뜬금없는 인물 관계의 조성은 정말 흐름을 지루하게 합니다. 영상미는 있지만 솔직히 오래 기다려온 사람으로 실망은 감출 수 없습니다. 이제 포터 시리즈도 가는가 보네요  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14854223, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>낄삼(piah****)</span>
+</a>
+</em>
+<em>2018.11.14 12:03</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','piah****', 'xvusJLS+hvazibmq1wTgKGXeVYUj+GNjmjCHdl82ZI8=', '조조 쳐 보고 다는 평점입니다. 롤링이 스토리를 썼다고는 믿기지 않은 헐렁한 전개와 뜬금없는 인물 관계의 조성은 정말 흐름을 지루하게 합니다. 영상미는 있지만 솔직히 오래 기다려온 사람으로 실망은 감출 수 없습니다. 이제 포터 시리즈도 가는가 보네요 ', '14854223', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14854223 count">1146</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14854223 count v2">547</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:100.0%"></span></span><em>10</em>
+</div>
+<div class="score_reple">
+<p><span class="ico_viewer">관람객</span>덤블도어의 과거사와 죽음의 성물의 떡밥이 풀리는 재미가 쏠쏠하네요. 단점은 해리포터시리즈(소설로)와 신비한 동물 1편을 안 보신 분들은 그냥 그래픽 좋은 영화라고 만 생각이 들거 같아요. 9:55분에 시작하는거 보고 방금 집에 도착해서 글남깁니다.  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14854465, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>재야학자(gkrl****)</span>
+</a>
+</em>
+<em>2018.11.14 13:08</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','gkrl****', 'j4kIw7SJTjXNI5ZUIgAWI5Lcql7X+gEARNgqSLPZhZE=', '덤블도어의 과거사와 죽음의 성물의 떡밥이 풀리는 재미가 쏠쏠하네요. 단점은 해리포터시리즈(소설로)와 신비한 동물 1편을 안 보신 분들은 그냥 그래픽 좋은 영화라고 만 생각이 들거 같아요. 9:55분에 시작하는거 보고 방금 집에 도착해서 글남깁니다. ', '14854465', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14854465 count">645</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14854465 count v2">144</span></strong>
+</div>
+</li>
+<li>
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:30.0%"></span></span><em>3</em>
+</div>
+<div class="score_reple">
+<p>동물 보고싶으면 동물농장 보세요  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14854313, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>발명왕(kwon****)</span>
+</a>
+</em>
+<em>2018.11.14 12:25</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','kwon****', 'x6F1sGrFGMnmz3Endgki7LdEFwmzAMdMBlULWL4Iopo=', '동물 보고싶으면 동물농장 보세요 ', '14854313', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14854313 count">921</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14854313 count v2">430</span></strong>
+</div>
+</li>
+<li class="last">
+<div class="star_score">
+<span class="st_off"><span class="st_on" style="width:100.0%"></span></span><em>10</em>
+</div>
+<div class="score_reple">
+<p>해리포터 덕후는 꼭봐야한다  </p>
+<dl>
+<dt>
+<em>
+<a href="#" onclick="javascript:showPointListByNid(14853830, 'after');parent.clickcr(this, 'ara.uid', '', '', event); return false;" target="_top">
+<span>닝네임(tngj****)</span>
+</a>
+</em>
+<em>2018.11.14 10:03</em>
+</dt>
+<dd>
+<a class="go_report2" href="#" onclick="parent.clickcr(this, 'ara.report', '', '', event); common.report('false','tngj****', '/sBM9adutqU21ydOkmkdKt8XBq4N4X/TTm3EghgdRc8=', '해리포터 덕후는 꼭봐야한다 ', '14853830', 'point_after', false);return false;"><em>신고</em></a>
+</dd>
+</dl>
+</div>
+<div class="btn_area">
+<a class="_sympathyButton" href="#" onclick="parent.clickcr(this, 'ara.sym', '', '', event);"><span class="blind">공감</span></a><strong><span class="sympathy_14853830 count">695</span></strong>
+<a class="_notSympathyButton" href="#" onclick="parent.clickcr(this, 'ara.opp', '', '', event);"><span class="blind">비공감</span></a><strong><span class="notSympathy_14853830 count v2">270</span></strong>
+</div>
+</li>
+</ul>
+</div>
+<div class="paging">
+<div>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=1" id="pagerTagAnchor1" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span class="on">1</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=2" id="pagerTagAnchor2" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>2</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=3" id="pagerTagAnchor3" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>3</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=4" id="pagerTagAnchor4" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>4</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=5" id="pagerTagAnchor5" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>5</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=6" id="pagerTagAnchor6" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>6</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=7" id="pagerTagAnchor7" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>7</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=8" id="pagerTagAnchor8" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>8</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=9" id="pagerTagAnchor9" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>9</span></a>
+<a href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=10" id="pagerTagAnchor10" onclick="parent.clickcr(this, 'ara.page', '', '', event);"><span>10</span></a>
+<a class="pg_next" href="/movie/bi/mi/pointWriteFormList.nhn?code=154255&amp;type=after&amp;isActualPointWriteExecute=false&amp;isMileageSubscriptionAlready=false&amp;isMileageSubscriptionReject=false&amp;page=2" id="pagerTagAnchor2" onclick="parent.clickcr(this, 'ara.page', '', '', event);" title="다음"><em>다음</em></a>
+</div>
+</div>
+</div>
+</div>
+<!-- //content -->
+<form id="reportForm" name="reportForm1"></form>
+<script type="text/javascript">
+var checkTextChange = false;
+var checkInput = false;
+var bActualPoint = false;
+var bMileageSubscriptionAlready = false;
+var bMileageSubscriptionReject = false;
+
+
+if (false == false && "after" == "after" && false) {
+	if (true && false) {
+		jindo.$Element("pointWriteExecuteLayer").show();
+	} else if (false && true) {
+		jindo.$Element("actualPointWriteExecuteLayer").show();
+	}
+}
+
+var oElActualPointWriteExecuteLayer = jindo.$Element("actualPointWriteExecuteLayer");
+
+if (oElActualPointWriteExecuteLayer != null && oElActualPointWriteExecuteLayer != "undefined") {
+	
+	jindo.$Element("naverMileageSubscriptionButton").attach("click", function(e){
+		e.stop(jindo.$Event.CANCEL_DEFAULT);
+		jindo.$Element("naverMileageSubscriptionLayer").hide();
+		
+		var mileageJoinUrl = "https://pay.naver.com/agreePopup?url=" + encodeURIComponent(top.location);
+		window.open(mileageJoinUrl);
+	});
+	
+	
+	
+	jindo.$Element("naverMileageSubscriptionLayerCloseButton").attach("click", function(e){
+		e.stop(jindo.$Event.CANCEL_DEFAULT);
+		bMileageSubscriptionReject = true;
+		jindo.$Element("naverMileageSubscriptionLayer").hide();
+		refreshPage();
+	});
+	
+
+	
+	jindo.$Element("actualPointWriteExecuteLayerOkButton").attach("click", function(e){
+		e.stop(jindo.$Event.CANCEL_DEFAULT);
+		jindo.$Element("actualPointWriteExecuteLayer").hide();
+		refreshPage();
+	});
+	
+	
+	
+	jindo.$Element("actualPointWriteExecuteLayerCloseButton").attach("click", function(e){
+		e.stop(jindo.$Event.CANCEL_DEFAULT);
+		jindo.$Element("actualPointWriteExecuteLayer").hide();
+		refreshPage();
+	});
+	
+}
+
+var oElPointWriteExecuteLayer = jindo.$Element("pointWriteExecuteLayer");
+
+if (oElPointWriteExecuteLayer != null && oElPointWriteExecuteLayer != "undefined") {
+	
+	jindo.$Element("pointWriteExecuteLayerOkButton").attach("click", function(e){
+		e.stop(jindo.$Event.CANCEL_DEFAULT);
+		jindo.$Element("pointWriteExecuteLayer").hide();
+		refreshPage();
+	});
+	
+	
+	
+	jindo.$Element("pointWriteExecuteLayerCloseButton").attach("click", function(e){
+		e.stop(jindo.$Event.CANCEL_DEFAULT);
+		jindo.$Element("pointWriteExecuteLayer").hide();
+		refreshPage();
+	});
+	
+}
+
+jindo.$Fn(function () {
+	var sDefaultMent = "최대 한글 140자까지 가능하며, 스포일러는 삭제될 수 있습니다.";
+    var isCheckPointExist = false;
+    var oElMent = jindo.$Element("ment");
+    
+    if (oElMent != null && oElMent != 'undefined') {
+    	if (false) {
+			oElMent.attach('focus', function(e) {
+		    	if ("after" == "after" && true && false && isCheckPointExist == false) {
+					point.checkPointAfterExistAndMileageSubscriptionType();
+				}
+		    	isCheckPointExist = true;
+		    });
+		} else {
+			oElMent.attach("focus", function (e) {
+				oElMent.$value().blur();
+				if(common.checkLogin(false) == false) {
+					//iOS blur 관련 문제 해결을 위한 코드.
+					oElMent.$value().value = "최대 한글 140자까지 가능하며, 스포일러는 삭제될 수 있습니다. ";
+				}
+			});
+		}
+	} 
+			
+	// 현재상영작 & 개봉전 평점
+	if (false == false && "after" == "before") {
+		jindo.$("ment").value = "국내 개봉작입니다. 개봉 후에는 개봉전 평점을 등록할 수 없습니다.";
+		jindo.$("ment").disabled = true;
+		jindo.$("pointAddButton").disabled = true;
+	}
+
+	var isExistPointStarRating = (jindo.$('pointWriteArea') != null);
+	
+	if (isExistPointStarRating == true) {
+		
+		jindo.$Fn(function () {
+			jindo.$Element("pointStarRating").addClass("st_over");
+	    }, this).attach(jindo.$("pointStarRating"), 'mouseover');
+		
+		jindo.$Fn(function () {
+			jindo.$Element("pointStarRating").removeClass("st_over");
+	    	jindo.$Element("pointStarRatingValue").html(jindo.$("point").value);	//마우스 아웃시 원래 설정된 평점으로 되돌림
+	    }, this).attach(jindo.$("pointStarRating"), 'mouseout');
+		
+		jindo.$A(jindo.$ElementList('._pointStarRatingList').$value()).forEach(function(element, index, array) {
+			//클릭 시 평점 반영
+			jindo.$Fn(function () {
+				//기존 선택 취소
+				jindo.$A(jindo.$ElementList('._pointStarRatingList').$value()).forEach(function(el, index, array) {
+					el.removeClass("on");
+					el.html(el.attr("title") + "점");
+				});
+				//신규 평점 반영
+				element.addClass("on");
+				element.html(element.attr("title") + "점 선택됨");
+		    	jindo.$("point").value = element.attr("title");
+		    	jindo.$Element("pointStarRatingValue").html(element.attr("title"));
+		    }, this).attach(element, 'click');
+
+			//마우스 오버시 화면에 보이는 숫자만 변경
+			jindo.$Fn(function () {
+		    	jindo.$Element("pointStarRatingValue").html(element.attr("title"));
+		    }, this).attach(element, 'mouseover');
+		});
+		
+		
+		pointStarRatingLayerToggle = function() {
+			setTimeout( function() {
+				if (document.activeElement != null) {
+					var focusedEl = jindo.$Element(document.activeElement);
+					if (focusedEl != null) {
+						if ( !focusedEl.hasClass("_pointStarRatingLayer") ) {
+							 jindo.$Element("pointStarRatingLayer").hide();
+							 
+							// 최초 로딩시 프레임 사이즈로 재조정
+							parent.resizePointAfterListIframe(frameHeight);
+						}
+					}
+				}
+			}, 100);
+		};
+		
+		var pointStarRatingLayerOpenButton = jindo.$Element("pointStarRatingLayerOpenButton");
+		var pointStarRatingLayer = jindo.$Element("pointStarRatingLayer");
+		
+		jindo.$Fn(function () {
+			if (pointStarRatingLayerOpenButton.hasClass("on")) {
+				// 평점 선택 레이어 닫기
+				pointStarRatingLayerOpenButton.removeClass("on");
+				pointStarRatingLayer.hide();
+				
+				// 최초 로딩시 프레임 사이즈로 재조정
+				parent.resizePointAfterListIframe(frameHeight);
+			} else {
+				// 평점 선택 레이어 열기
+				pointStarRatingLayerOpenButton.addClass("on");
+				pointStarRatingLayer.show();
+				
+				// 평점 선택 레이어가 열린만큼 프레임 사이즈 재조정
+				var newFrameHeight = eval(jindo.$Document().scrollSize().height);
+				parent.resizePointAfterListIframe(newFrameHeight);
+			}
+	    }, this).attach(pointStarRatingLayerOpenButton, 'click');
+		
+		jindo.$A(jindo.$ElementList('._pointStarRatingLayerList').$value()).forEach(function(element, index, array) {
+			// 클릭 시 평점 반영
+			jindo.$Fn(function () {
+				jindo.$A(jindo.$ElementList('._pointStarRatingList').$value()).forEach(function(el, index, array) {
+					// 기존 선택 취소
+					el.removeClass("on");
+					el.html(el.attr("title") + "점");
+					
+					if ( element.hasClass(el.attr("title")) ) {
+						// 신규 평점 반영
+						el.addClass("on");
+						el.html(el.attr("title") + "점 선택됨");
+				    	jindo.$("point").value = el.attr("title");
+				    	jindo.$Element("pointStarRatingValue").html(el.attr("title"));
+				    	
+				    	// 평점 선택 레이어 닫기
+				    	jindo.$Element("pointStarRatingLayerOpenButton").removeClass("on");
+				    	jindo.$Element("pointStarRatingLayer").hide();
+
+				    	// 최초 로딩시 프레임 사이즈로 재조정
+						parent.resizePointAfterListIframe(frameHeight);
+					}
+				});
+		    }, this).attach(element, 'click');
+			
+			// 평점 선택 레이어에 포커스가 없다면 레이어 닫기
+			jindo.$Fn(pointStarRatingLayerToggle, this).attach(element, "blur");
+		});
+		
+	    var oDefaultTextValue = new jindo.DefaultTextValue(jindo.$("ment"), { sValue : sDefaultMent });
+	    
+	    var oWatchInput = new jindo.WatchInput(jindo.$('ment'));
+	    oWatchInput.attach('change', function(oCustomEvent) {
+	    	if (checkTextChange == false) {
+	        	checkTextChange = true;
+	    	}
+	    	
+	    	var len = oCustomEvent.sText.length;
+	    	
+	    	//iOS blur 관련 문제 해결을 위한 코드.
+	    	if (true) {
+	    		len = 0;
+	    	}
+	    	
+	    	jindo.$("ment_cnt").innerHTML = len;
+	    	
+	    	if (len > 140) {
+	    		alert("평은  140자 이하로 등록해 주세요.");
+	    		var reText = oCustomEvent.sText.substring(0,140);
+	    		jindo.$('ment').value = reText;
+	    		jindo.$("ment_cnt").innerHTML = reText.length;
+	    		return;
+	    	}
+	    }).attach('blur', function(oCustomEvent) {
+	    	
+	    	if (jindo.$("ment").value == sDefaultMent) {
+	    		jindo.$("ment_cnt").innerHTML = "0";
+	    	}
+	    });
+	    
+	    jindo.$Element("pointAddButton").attach("click", function (e) {point.add()});
+	}
+	
+	
+	if (jindo.$("actualYnCheckBox") != null) {
+		jindo.$Fn(function () {
+	    	if (jindo.$("actualYnCheckBox").checked == false) {
+	    		location.href = "/movie/bi/mi/pointWriteFormList.nhn?code=154255&type=after";
+	    	} else {
+	    		location.href = "/movie/bi/mi/pointWriteFormList.nhn?code=154255&type=after&onlyActualPointYn=Y";
+	    	}
+	    }, this).attach(jindo.$("actualYnCheckBox"), 'click');
+	}
+
+	if (jindo.$("actualYnLable") != null) {
+	    jindo.$Fn(function () {
+	    	if (jindo.$("actualYnCheckBox").checked == false) {
+	    		location.href = "/movie/bi/mi/pointWriteFormList.nhn?code=154255&type=after&onlyActualPointYn=Y";
+	    	} else {
+	    		location.href = "/movie/bi/mi/pointWriteFormList.nhn?code=154255&type=after";
+	    	}
+	    }, this).attach(jindo.$("actualYnLable"), 'click');
+	}
+	
+	
+	if (jindo.$Element("actualPointHelp") != null && jindo.$Element("actualPointHelp") != "undefined") {
+		actualPointHelpLayerToggle = function() {
+			setTimeout( function() {
+				if (document.activeElement != null) {
+					var focusedEl = jindo.$Element(document.activeElement);
+					if (focusedEl != null) {
+						if ( !focusedEl.hasClass("_actualPointHelp") ) {
+							 jindo.$Element("actualPointHelp").hide();
+						}
+					}
+				}
+			}, 100);
+		};
+
+		new jindo.LayerManager("actualPointHelp", {
+			sCheckEvent : "click",
+			nHideDelay : 0
+		}).link(jindo.$("actualPointHelp"), jindo.$("actualPointHelpButton"));
+
+		jindo.$Element("actualPointHelpButton").attach("click", function(e){
+			e.stop(jindo.$Event.CANCEL_DEFAULT);
+			jindo.$Element("actualPointHelp").toggle();
+		});
+
+		jindo.$Element("actualPointHelpCloseButton").attach("click", function(e){
+			e.stop(jindo.$Event.CANCEL_DEFAULT);
+			jindo.$Element("actualPointHelp").toggle();
+		});
+
+		
+		var waelActualPointHelp = jindo.$ElementList('._actualPointHelp');
+
+		jindo.$A(waelActualPointHelp.$value()).forEach(function(value, index, array) {
+			jindo.$Fn(actualPointHelpLayerToggle, this).attach(value, "blur");
+		});
+	}
+	
+	
+	
+		
+			
+				
+					
+					
+						
+							 
+						
+					
+				
+			
+		
+
+		
+			
+			
+		
+
+		
+			
+			
+		
+
+		
+			
+			
+		
+
+		
+		
+
+		
+			
+		
+	
+	
+	parent.setParamForPointAfterList('N', 'sympathyScore', '1');
+	parent.resizePointAfterListIframe(0);
+	
+	// 최소 높이 270px 지정
+	var frameHeight = eval(jindo.$Document().scrollSize().height);
+	
+	parent.resizePointAfterListIframe(frameHeight);
+	parent.isPointAfterListLoad = true;
+	
+	
+	
+	
+}, this).attach(this, 'load');
+
+var point = {
+		pwmManager : new PwmManager(),
+		
+		checkLoginWithMessage : function(login, loginMessage, notLoginMessage) {
+			if(login == false){
+				if(confirm(message)){
+					top.location.href="https://nid.naver.com/nidlogin.login?mode=form&url="+encodeURIComponent(top.location.href);
+				}
+				return false;
+			}
+			return true;
+		},
+		
+		checkEnable : function() {
+			if(common.checkLogin(false) == false) {
+				return false;
+			}
+			
+			return true;
+		},
+		
+		
+		checkAlreadyPointAfterExist : function (nid) {
+			var existPointType = "pointBefore";
+			
+			if (false == false) {
+				var oAjax = new jindo.$Ajax("/api/internal/point/pointAfterExistJson.nhn", {
+			    	onload : function (oRes) {
+			    		var resultCode = oRes.json().resultCode;
+			    		
+			    		if (resultCode == "error") {							// 서버 오류
+			    			alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+			    			return false;
+			    		} else {
+			    			existPointType = oRes.json().existPointType;
+			    			point.del(existPointType, nid);
+			    		}
+			    	},
+					timeout : 5,
+			    	onerror : function (oRes) {
+			    		alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+			    		return false;
+			    	},
+			    	ontimeout : function (oRes) {
+			    		alert("처리가 지연되고 있습니다. 다시 시도해주세요.");
+			    		return false;
+			    	}
+			    });
+			    
+			    oAjax.request({
+			    	"movieCode" : "154255",
+			    	"isActualPoint" : "false"
+			    });
+			} else {
+				point.del(existPointType, nid);
+			}
+		},
+
+		
+		checkPointAfterExistAndMileageSubscriptionType : function () {
+			var existPointType = "pointBefore";
+			
+		    var oAjax = new jindo.$Ajax("/api/internal/point/pointAfterExistAndMileageSubscriptionTypeJson.nhn", {
+		    	onload : function (oRes) {
+		    		var resultCode = oRes.json().resultCode;
+		    		
+		    		if (resultCode == "error") {							// 서버 오류
+		    			alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+		    		} else {
+		    			
+		    			existPointType = oRes.json().existPointType;
+		    			
+		    			if (false && existPointType == "afterPoint") {			// 실관람 평점 작성 가능
+		    				bActualPoint = true;
+		    			
+		    				if(confirm("관람객 평점 작성 시, 이전에 작성한 개봉 후 평점은 삭제됩니다.") == false) {
+		    					return false;
+		    				}
+		    			}
+		    			
+		    			
+						if (false) {
+							var mileageSubscriptionType = oRes.json().mileageSubscriptionType;
+							
+							if (mileageSubscriptionType == "NOT_AGREED_WITH_NEW_TERMS") {
+								jindo.$Element("naverMileageSubscriptionLayer").show();
+								return false;
+							} else if (mileageSubscriptionType == "AGREED_WITH_NEW_TERMS") {
+								bMileageSubscriptionAlready = true;
+							} else if (mileageSubscriptionType == "POSSIBLE") {
+								jindo.$Element("naverMileageSubscriptionLayer").show();
+								return false;
+							} else if (mileageSubscriptionType == "STOP") {
+								alert("현재 포인트 서비스 중지 상태로 약관동의 및 적립이 불가능합니다.");
+								return false;
+							} else if (mileageSubscriptionType == "IMPOSSIBLE_PERIOD") {
+								alert("회원님은 네입페이 서비스 약관동의 불가 기간으로 약관동의 및 적립이 불가능합니다.");
+								return false;
+							} else if (mileageSubscriptionType == "DUPLICATES_REAL_NAME") {
+								alert("회원님의 실명 아이디 3개가 모두 네이버페이 서비스 이용 중이어서 약관동의 및 적립이 불가능합니다.");
+								return false;
+							} else if (mileageSubscriptionType == "ALREADY") {
+								bMileageSubscriptionAlready = true;
+							} else {
+								alert("비정상적인 접근입니다.");
+								return false;
+							}
+						}
+		    		}
+		    	},
+				timeout : 5,
+		    	onerror : function (oRes) {
+		    		alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+		    	},
+		    	ontimeout : function (oRes) {
+		    		alert("처리가 지연되고 있습니다. 다시 시도해주세요.");
+		    	}
+		    });
+		    
+		    oAjax.request({
+		    	"movieCode" : "154255",
+		    	"isActualPoint" : "false"
+		    });
+		},
+		
+		add : function () {
+			
+			if(this.checkEnable() == false) {
+				return false;
+			} else {
+				var ment = jindo.$S(jindo.$S(jindo.$("ment").value).trim()).$value();
+				var point = eval(jindo.$("point").value);
+				
+				var meaningless_pattern = /[ㄱ-ㅎㅏ-ㅣ]{5,}/g;
+				if (meaningless_pattern.test(ment)) {
+					alert("무의미한 자음/모음의 연속입력은 불가능합니다.");
+					return false;
+				}
+				
+				var continual_pattern = /(.)\1\1\1\1/g;
+				if(continual_pattern.test(ment.replace(/ /g,''))) {
+					alert("동일 글자의 5회 이상 연속입력은 불가능합니다.");
+					return false;
+				}
+				
+				if (checkTextChange == false) {
+					alert('평을 입력해 주세요.');
+					jindo.$("ment").focus();
+					return false;
+				}
+				
+				if (ment.replace(/ /g,'').length < 10){
+					alert('공백을 제외하고 10자 이상 작성하셔야 등록됩니다.');
+					jindo.$("ment").focus();
+					return false;
+				}
+				
+				if (ment == "" || ment == "최대 한글 140자까지 가능하며, 스포일러는 삭제될 수 있습니다."){
+					alert('평을 입력해 주세요.');
+					jindo.$("ment").focus();
+					return false;
+				}
+				
+				if (ment.length > 140){
+					alert('평은 140자 이하로 등록해 주세요.');
+					jindo.$("ment").focus();
+					return false;
+				}
+				
+				if (point == 0){
+					alert('평점을 입력해 주세요.');
+					return false;
+				}
+				
+				if (point > 10){
+					alert('평점은 10점까지만 입력이 가능합니다.');
+					return false;
+				}
+				
+				this.pwmManager.startFilter('comment', function(){}, new Array('평점'), new Array(ment));
+				
+				if (checkInput) {
+					return false;
+				}
+				
+				checkInput = true;
+				
+				//ajax전송
+				var ajaxAddUrl = "/api/internal/point/pointBeforeWrite.nhn";
+				if ("after" == "after") {
+					ajaxAddUrl = "/api/internal/point/pointAfterWrite.nhn";
+				}
+
+				var ajax = new jindo.$Ajax(ajaxAddUrl, { 
+					method : "POST",
+					async : false,
+					onload : this.addCallback
+				});
+				ajax.header("ajax", "true");
+				ajax.request({
+					"code":154255,
+					"point":point,
+					"ment":ment,
+					"csrfToken" : ""
+				});
+			}
+			return;
+		},
+		
+		addCallback : function(req) {
+			var returnValue = req.text();
+			
+			if (returnValue != "success") {
+				alert(returnValue);
+				checkInput = false;
+				return;
+			}
+
+			top.location.reload(true);
+			top.location.href = '/movie/bi/mi/point.nhn?code=154255&isActualPointWriteExecute=false&isMileageSubscriptionAlready=' + bMileageSubscriptionAlready + '&isMileageSubscriptionReject=' + bMileageSubscriptionReject + '#pointAfterTab';
+		},
+		
+		del : function (existPointType, nid) {
+			if (existPointType == "actualPoint") {
+				if (confirm("관람객 평점 삭제시, 평점 작성으로 적립된 포인트는 회수됩니다. 평점을 삭제할까요?") == false) {
+					return false;
+				}
+			} else {
+				if (confirm("본인 삭제 시 복구할 수 없습니다.\n평점을 삭제하시겠습니까?") == false) {
+					return false;
+				}
+			}
+			
+			var ajaxDeleteUrl = "/api/internal/point/pointBeforeDelete.nhn";
+			if ("after" == "after") {
+				ajaxDeleteUrl = "/api/internal/point/pointAfterDelete.nhn";
+			}
+			
+			var ajax = new jindo.$Ajax(ajaxDeleteUrl, { 
+				method : "POST",
+				async : false,
+				onload : this.delCallback
+			});
+			ajax.header("ajax", "true");
+			ajax.request({
+				"nid":nid
+			});
+		},
+		
+		delCallback : function(req) {
+			var returnValue = req.text();
+			
+			if(returnValue != "success"){
+				alert(returnValue);
+				return false;
+			}
+			
+			top.location.href = '/movie/bi/mi/point.nhn?code=154255#pointAfterTab';
+			top.location.reload(true);
+		}
+};
+
+function dislplayOrder(order) {
+	var url = "/movie/bi/mi/pointWriteFormList.nhn?code=154255&type=after";
+	
+	var onlyActualPointYnValue = jindo.$("onlyActualPointYn").value;
+	
+	if (onlyActualPointYnValue != "") {
+		url = url + "&onlyActualPointYn=" + onlyActualPointYnValue;
+	}
+	
+	url = url + "&order=" + order;
+	
+	location.href = document.location.protocol + "//" + document.domain + url;
+}
+
+function showPointListByNid(nid, target){
+	if (target == 'after') {
+		top.location.href = top.location.protocol + "//" + top.location.hostname + "/movie/point/af/list.nhn?st=nickname&target=after&sword="+nid;
+	} else {
+		top.location.href = top.location.protocol + "//" + top.location.hostname + "/movie/point/af/list.nhn?st=nickname_before&target=before&sword="+nid;
+	}
+}
+
+function refreshPage() {
+	 
+	top.location.href = '/movie/bi/mi/point.nhn?code=154255#pointAfterTab';
+}
+</script>
+<script type="text/javascript">
+	var sympathy = new Sympathy("154255", "after");
+</script>
+<script type="text/javascript">
+            jindo.$Fn(function() {
+                try{ lcs_do(); } catch(e){}
+            }).attach(window, "pageshow");
+		</script>
+</body>
+</html>
