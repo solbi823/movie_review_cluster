@@ -41,7 +41,7 @@ def calculate_mean_similarity(model, nouns, words):
 	summation = 0
 	num = 0
 	for n in nouns:
-		if n in model.wv.vocab:
+		if n in model.wv.vocab and n != "영화":
 
 			for w in words:
 				summation += model.similarity(n, w)
@@ -83,28 +83,28 @@ def main():
 	global data
 
 
-	f = open(os.path.expanduser("new_file.txt"), 'r')
+	# f = open(os.path.expanduser("new_file.txt"), 'r')
 
-	while True:
+	# while True:
 
-		line = f.readline()
-		if not line or line=='\n':
-			break 
-		tmp =mecab.nouns(line)
-		analyzedData.append(tmp)
+	# 	line = f.readline()
+	# 	if not line or line=='\n':
+	# 		break 
+	# 	tmp =mecab.nouns(line)
+	# 	analyzedData.append(tmp)
 
-	f.close()
+	# f.close()
 
 
-	train_data = analyzedData
+	# train_data = analyzedData
 
-	model = gensim.models.Word2Vec(analyzedData, size =100, window = 5, min_count=5, workers = 4, sg =1)
-	model.init_sims(replace = True)
-	model.save('./train_model')
+	# model = gensim.models.Word2Vec(analyzedData, size =500, window = 10, min_count=5, workers = 4, sg =1)
+	# model.init_sims(replace = True)
+	# model.save('./train_model')
 
 
 	# 위키피디아 덤프파일로 모델 구성
-	# model = gensim.models.KeyedVectors.load_word2vec_format("./wiki_dmpv_1000_no_taginfo_word2vec_format.bin", binary=True)
+	model = gensim.models.KeyedVectors.load_word2vec_format("./wiki_dmpv_1000_no_taginfo_word2vec_format.bin", binary=True)
 
 	# 크롤링한 테스트 파일 모델구성
 	# model = gensim.models.Word2Vec.load('./model')
@@ -113,7 +113,7 @@ def main():
 	# model = KeyedVectors.load_word2vec_format('./movie_model.vec')
 
 	# 요건 과제로 받은 영화리뷰 20만개를 konlpy 형태소 분석후 word2vec 로 모델 구성
-	model = gensim.models.Word2Vec.load('./train_model')
+	# model = gensim.models.Word2Vec.load('./train_model')
 
 	# # 단어 리스트 작성
 	# vocab = model.wv.index2word
@@ -123,16 +123,21 @@ def main():
 	# 	wordvectors.append(model.wv[v])
 	# wordvectors = np.vstack(wordvectors)
 
-	# print(model.most_similar(positive=["감독", "연출"], topn=20))
-	# print(model.most_similar(positive=["스토리", "줄거리", "내용"], topn=20))
+	# print(model.most_similar(positive=["감독"], topn=20))
+	# print(model.most_similar(positive=["스토리"], topn=20))
+	# print(model.most_similar(positive=["내용"], topn=20))
 	# print(model.most_similar(positive=["음악"], topn=20))
-	# print(model.most_similar(positive=["영상미", "색감"], topn=20))
-	# print(model.most_similar(positive=["연기력","배우","연기"], topn=20))
+	# print(model.most_similar(positive=["영상미"], topn=20))
+	# print(model.most_similar(positive=["영상"], topn=20))
+	# print(model.most_similar(positive=["연기력"], topn=20))
+	# print(model.most_similar(positive=["배우"], topn=20))
 
 
 	classified_review=[[], [], [], [], []]
 
 	f = open(os.path.expanduser("crawled_result.txt"), 'r')
+
+	# print(mecab.nouns("재밌는 영화 잘 봤습니다"))
 
 	while True:
 
@@ -149,13 +154,13 @@ def main():
 		value_list = []
 
 		value_list.append( calculate_mean_similarity(model, nouns, ["감독","연출"]))
-		value_list.append( calculate_mean_similarity(model, nouns, ["스토리", "내용", "줄거리"]))
+		value_list.append( calculate_mean_similarity(model, nouns, ["내용", "줄거리"]))
 		value_list.append( calculate_mean_similarity(model, nouns, ["음악", "노래"]))
 		value_list.append( calculate_mean_similarity(model, nouns, ["색감", "영상"]))
-		value_list.append( calculate_mean_similarity(model, nouns, ["연기", "배우", "연기력"]))
+		value_list.append( calculate_mean_similarity(model, nouns, ["연기", "배우"]))
 
 		for i in range(0, 5):
-			if value_list[i] > 0.93:
+			if value_list[i] > 0.3:
 				classified_review[i].append(splited_line[1])
 
 	f.close()
